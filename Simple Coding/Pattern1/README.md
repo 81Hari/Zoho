@@ -14,3 +14,11 @@ P                 M
    R           A     
 P                 M  
 </pre>
+
+<h2>Solution</h2>
+
+<ul>
+<li>Creating Matrix of NxN (where N=length of string)</li>
+<li> fill the left diagonal with string</li>
+<li> fill the right diagonal with reverse string</li>
+</ul>
