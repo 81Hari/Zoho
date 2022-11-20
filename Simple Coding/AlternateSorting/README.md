@@ -16,7 +16,7 @@ Eg.)<br>
 
 <h2>Solution- 2</h2>
 <ul>
-<li> Creating a copy of given array,sort the that array in increasing order</li>
+<li> Creating a copy of given array,sort that array in increasing order</li>
 <li> Now creating two pointers in sorted array, using that pointers traversing the array from the start and from the end,picking elements alternatively from both ends and overwriting the original array.</li> 
 
 </ul>
