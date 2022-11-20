@@ -13,5 +13,5 @@ Eg.)<br><br>
 <h2>Solution</h2>
 <ul>
 <li>Find the number parentheses to be removed using stack method</li>
-<li>Now find all the possiblities  using recurrsion</li>
+<li>if number of parentheses to be removed is n.then remove n parentheses in all the possible ways using recurrsion and check for balance and print</li>
 </ul
