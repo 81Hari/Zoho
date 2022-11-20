@@ -17,4 +17,5 @@ Enter the elements : 4 1 2 2<br>
 <b>INPUT :</b><br>
 Size of Array : 1 <br>
 Enter the elements : 1 <br>
+
 <b>OUTPUT :</b>  No second maximum
