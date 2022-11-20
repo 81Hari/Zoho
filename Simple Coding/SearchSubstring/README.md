@@ -23,7 +23,7 @@ End index: <3, 2>
 
 <b>Input:</b><br> 
 String: PWKCTBOFALOOERMXLATEACOTN<br>
-Substring: POET/CART/LATE/TEAL/MEN/BOX/ROAM?BOAT/FOX/WOOL/COT<br> 
+Substring: POET / CART / LATE / TEAL /MEN / BOX / ROAM / BOAT / FOX / WOOL / COT<br> 
 <b>Output:</b>  <br>
 <pre>
 
