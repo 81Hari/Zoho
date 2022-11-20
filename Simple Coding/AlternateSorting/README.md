@@ -9,4 +9,6 @@ Eg.)<br>
 <br>
 <h2>Solution</h2>
 
-<ul> Taking copy of given array, Sorting one of the array in increasing order and other in decreasing order.</ul
+<ul> 
+  <li>Taking a copy of given array, Sorting one of the array in increasing order and other in decreasing order.</li>
+</ul>
