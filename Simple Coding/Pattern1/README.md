@@ -5,11 +5,12 @@ Write a program to print the following output for the given input. You can assum
 <b>Input: </b> PROGRAM
 
 <b>Output</b>
-
-P                 M <br> 
-   R           A     <br>
-      O     R        <br>
-         G           <br>
-      O     R        <br>
-   R           A     <br>
-P                 M  <br>
+<pre>
+P                 M  
+   R           A     
+      O     R        
+         G           
+      O     R        
+   R           A     
+P                 M  
+</pre>
