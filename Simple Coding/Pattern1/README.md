@@ -19,6 +19,6 @@ P                 M
 
 <ul>
 <li>Creating Matrix of NxN (where N=length of string)</li>
-<li> fill the left diagonal with string</li>
-<li> fill the right diagonal with reverse string</li>
+<li> store the left diagonal of the matrix with the given string</li>
+<li> store the right diagonal of the matrix with the given string reversed</li>
 </ul>
