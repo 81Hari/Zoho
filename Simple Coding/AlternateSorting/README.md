@@ -10,5 +10,6 @@ Eg.)<br>
 <h2>Solution</h2>
 
 <ul> 
-  <li>Taking a copy of given array, Sorting one of the array in increasing order and other in decreasing order.</li>
+  <li>Taking two copy of given array, Sorting one of the array in increasing order and other in decreasing order.</li>
+  <li>Now alternativly picking one element from each array and filling the orignal array.</li>
 </ul>
