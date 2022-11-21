@@ -16,5 +16,5 @@ numbers in the subsets deduced from the main array.
 
 <ul>
 <li>Finding all the subsets of array using backtracking </li>
-<li> And checking all the subsets average with arrays average<li>
+<li> And checking all the subsets average with arrays average</li>
 <ul>
