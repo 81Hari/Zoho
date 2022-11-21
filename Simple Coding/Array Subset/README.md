@@ -6,9 +6,9 @@ numbers in the subsets deduced from the main array.
 
 <b>E.g.: </b>
 
-<b>Input =</b> [10, 20, 30, 40] 
-<b>Output =</b> [20, 30],[10, 40]
+<b>Input =</b> [10, 20, 30, 40] <br>
+<b>Output =</b> [20, 30],[10, 40]<br>
 
-<b>Input =</b> [20, 40, 60] 
-<b>Output =</b> [40],[20, 60]
+<b>Input =</b> [20, 40, 60] <br>
+<b>Output =</b> [40],[20, 60]<br>
 
