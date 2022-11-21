@@ -37,20 +37,48 @@ public class SubsetArray {
 			int subset[][] = new int[N1][N];
 			
 			
-			findSubset(arr,0,N,subset);
+			findSubset(arr,0,N,subset); // finding all the subsets using backtracking
 			
+			
+			double avg = 0; // finding average for the array
+			for(int i=0;i<N;i++) {
+				avg = avg + arr[i];
+			}
+			
+			
+			avg/=N;
 			
 			
 			
 			for(int i =0;i<N1;i++) {
+				int k = 0;
+				double temp =0; // avgerage for the subset of the array
+				
 				for(int j=0;j<N;j++) {
 					
 					if(subset[i][j] != Integer.MIN_VALUE) {
-					System.out.print(subset[i][j] + " ");
+						temp = temp + subset[i][j];
+						k++;
 					}
 					
 				}
-				System.out.println();
+				
+				temp/=k;
+				// checking whether subset average is equal to array's average and printing the subset.
+				if(temp == avg) {
+					for(int j=0;j<N;j++) {
+						
+						if(subset[i][j] != Integer.MIN_VALUE) {
+							System.out.print(subset[i][j] + " ");
+						}
+						
+					}
+					System.out.println();
+					
+				}
+				
+				
+				
 			}
 			
 		}
