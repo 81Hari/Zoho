@@ -52,7 +52,7 @@ public class SubsetArray {
 			
 			for(int i =0;i<N1;i++) {
 				int k = 0;
-				double temp =0; // avgerage for the subset of the array
+				double temp =0; // average for the subset of the array
 				
 				for(int j=0;j<N;j++) {
 					
