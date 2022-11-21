@@ -45,6 +45,8 @@ public class AlternateSorting {
 			obj.mergeSort(arr1,0,N-1); //sorting one temp array in increasing order
 			obj.quickSort(arr2,0,N-1); //another in decreasing order 
 			
+			
+			
 			int i,j,k;
 			i = j = k = 0;
 			
@@ -88,11 +90,11 @@ public class AlternateSorting {
 		end = ub;
 		
 		while(start<end) {
-			while(pivot<=arr2[start]) {
+			while(pivot<=arr2[start] && start<ub) {
 				start++;
 			}
 			
-			while(pivot>arr2[end]) {
+			while(pivot>arr2[end] && end>0) {
 				end--;
 			}
 			if(start<end) {
