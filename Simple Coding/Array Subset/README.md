@@ -12,3 +12,9 @@ numbers in the subsets deduced from the main array.
 <b>Input =</b> [20, 40, 60] <br>
 <b>Output =</b> [40],[20, 60]<br>
 
+<h2>Solution</h2>
+
+<ul>
+<li>Finding all the subsets of array using backtracking </li>
+<li> And checking all the subsets average with arrays average<li>
+<ul>
