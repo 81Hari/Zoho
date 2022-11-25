@@ -17,13 +17,21 @@ Number2: 784621997<br>
 
 <ul>
   <li>Create Two arrays with size of 100</li>
+  
   <li>Now read the first number and second number as String from user</li>
+  
   <li>Traverse the String1(first number) digit by digit from the last and store the each digit in the array from the last</li>
+  
   <li>j = N-1-i</li>
+  
   <li> arr[j] = Integer.parseInt(rawInput.substring(n1-1-i,n1-i))</li>
+  
   <li>Now do the same process for the second number</li>
-  <li> Now declare one variable to store remaining (When we add two numbers, if we get two digit number we keep one digit in remaining and add it to next)<li>
+  
+  <li> Now declare one variable to store remaining (When we add two numbers, if we get two digit number we keep one digit in remaining and add it to next)</li>
+  
   <li>Now add the two arrays elements from the last and store result in third array</li>
+  
   <li> print the third array</li>
 </ul>
 
