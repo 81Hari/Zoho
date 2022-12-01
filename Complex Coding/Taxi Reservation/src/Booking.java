@@ -125,13 +125,16 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 	
 	
 	public static int allocateTaxi(char pickup, char drop, int pickupTime, int dropTime) {
-		int i,j,noOfFreeTaxi;
 		
+		int i,j,noOfFreeTaxi; 
+		//----------------Cloning a Taxi List----------------------------	
 		List<Taxi> FreeTaxi = new ArrayList<Taxi>();
 		for(i=0;i<noOfTaxi;i++) {
-			FreeTaxi.add(new Taxi(Taxis.get(i)));
+			FreeTaxi.add(new Taxi(Taxis.get(i))); 
 		}
+		//-----------------------------------------------------------------
 		
+		//--------------------------Which Taxi has No Ride-----------------------
 		List<Integer> indexTobeDeleted = new ArrayList<Integer>();
 		
 		noOfFreeTaxi = noOfTaxi;
@@ -146,13 +149,16 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 				int tempdropTime = tempTaxi.dropTime.get(j);
 				
 				if( !( (pickupTime>=tempPickupTime && pickupTime>=tempdropTime) || (dropTime<=tempPickupTime && dropTime<=tempdropTime) ) ) {
+				
 					indexTobeDeleted.add(i);
 					break;
 				}
 			}
 		
 		}
+		//--------------------------------------------------------------
 		
+		//----------------------------Delete Taxi those are busy ------------------------
 		for(i=0;i<indexTobeDeleted.size();i++) {
 			int in = indexTobeDeleted.get(i);
 			
@@ -161,10 +167,10 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 		}
 		noOfFreeTaxi = FreeTaxi.size();
 		indexTobeDeleted.clear();
+		//-------------------------------------------------------------------------
 		
 		
-		
-		
+		//-----------------------Even Though Taxi is Free(During this Ride) But After Completing this Ride, Taxi can't take the next Ride Taxi
 		for(i=0;i<noOfFreeTaxi;i++) {
 			
 			Taxi tempTaxi = FreeTaxi.get(i);
@@ -192,6 +198,10 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 			
 			}
 		}
+		//-----------------------------------------------------------------------------------------------------------------
+		
+		//--------------------------Delete Which Taxi is Busy----------------------------------------------------------- 
+		
 		
 		for(i=0;i<indexTobeDeleted.size();i++) {
 			int in = indexTobeDeleted.get(i);
@@ -205,10 +215,12 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 		indexTobeDeleted.clear();
 		
 		
-
+		//-------------------------------------------------------------------------------------------------------
 		
 		
+		// ----------------------------Taxi Which is Near will be Allocated--------------------------------------------------------- 
 		
+		//----------------------before the Ride----------------------------
 		for(i=0;i<noOfFreeTaxi;i++) {
 			
 			Taxi tempTaxi = FreeTaxi.get(i);
@@ -229,6 +241,7 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 				}
 				
 			}
+			
 			if(noOfJournies !=0 && in1!=-1 ) {
 				if(!( (tempTaxi.pickupTime.get(in1) - dropTime) >= Math.abs( (int)(drop-tempTaxi.pickup.get(in1)) ) ) ) {
 					System.out.println((tempTaxi.pickupTime.get(in1)));
@@ -242,7 +255,9 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 			
 			
 		}
-
+		
+		//--------------------------------------------------
+		//----------------------------Delete Taxi those are busy ------------------------
 		for(i=0;i<indexTobeDeleted.size();i++) {
 			int in = indexTobeDeleted.get(i);
 			
@@ -254,6 +269,7 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 		
 		indexTobeDeleted.clear();
 		
+		//-------------------------------------------------------------------After the Ride---------------------------------------------
 		int time = Integer.MAX_VALUE;
 		for(i=0;i<noOfFreeTaxi;i++) {
 			int tempTime;
@@ -324,6 +340,10 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 			
 		}
 		
+//-----------------------------------------------------------------------------------------------------------
+		
+		//--------------------------Delete Which Taxi is Busy----------------------------------------------------------- 
+		
 		for(i=0;i<indexTobeDeleted.size();i++) {
 			int in = indexTobeDeleted.get(i);
 			
@@ -336,6 +356,10 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 		indexTobeDeleted.clear();
 		
 		
+		//-------------------------------------------------------------------------------------------------
+		
+		
+// If There are more than one Taxi Free During Ride, Which Taxi have less Earning will be allocated. ---------------------------------------		
 		if(FreeTaxi.size()>1) {
 			int amt = Integer.MAX_VALUE;
 			for( i=0;i<FreeTaxi.size();i++) {
