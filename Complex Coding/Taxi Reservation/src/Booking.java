@@ -145,7 +145,7 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 				int tempPickupTime = tempTaxi.pickupTime.get(j);
 				int tempdropTime = tempTaxi.dropTime.get(j);
 				
-				if( !( (pickupTime>tempPickupTime && pickupTime>tempdropTime) || (dropTime<tempPickupTime && dropTime<tempdropTime) ) ) {
+				if( !( (pickupTime>=tempPickupTime && pickupTime>=tempdropTime) || (dropTime<=tempPickupTime && dropTime<=tempdropTime) ) ) {
 					indexTobeDeleted.add(i);
 					break;
 				}
@@ -175,7 +175,7 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 				
 				int tempdropTime = tempTaxi.dropTime.get(j);
 				int tempTime = pickupTime - tempdropTime;
-				if(tempTime>0) {
+				if(tempTime>=0) {
 					if(time>tempTime) {
 						time = tempTime;
 						in1 = j;
@@ -187,14 +187,10 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 			if(noOfJournies !=0 && in1!=-1) {
 				if(!( (pickupTime - tempTaxi.dropTime.get(in1)) >= Math.abs( (int)(pickup-tempTaxi.drop.get(in1)) ) ) ) {
 					indexTobeDeleted.add(i);
-					
+		
 				}
-				
+			
 			}
-			
-			
-			
-			
 		}
 		
 		for(i=0;i<indexTobeDeleted.size();i++) {
@@ -212,6 +208,7 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 
 		
 		
+		
 		for(i=0;i<noOfFreeTaxi;i++) {
 			
 			Taxi tempTaxi = FreeTaxi.get(i);
@@ -223,7 +220,7 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 				int temppickupTime = tempTaxi.pickupTime.get(j);
 				int tempTime = temppickupTime - dropTime;
 				
-				if(tempTime>0) {
+				if(tempTime>=0) {
 					if(time>tempTime) {
 						time = tempTime;
 						in1 = j;
@@ -257,8 +254,117 @@ public Booking(int id, int taxiId, int custId, char pickup, char drop, int picku
 		
 		indexTobeDeleted.clear();
 		
+		int time = Integer.MAX_VALUE;
+		for(i=0;i<noOfFreeTaxi;i++) {
+			int tempTime;
+			Taxi tempTaxi = FreeTaxi.get(i);
+			int noOfJournies = tempTaxi.bookingId.size();
+			if(noOfJournies == 0) {
+				tempTime = Math.abs((int)('A'-pickup));
+				if(time>tempTime) {
+					time = tempTime;
+				}
+			}
+			else {
+				
+				for(j=0;j<noOfJournies;j++) {
+					tempTime = tempTaxi.pickupTime.get(j) - dropTime;
+					if(tempTime>=0) {
+						if(time>tempTime) {
+							time = tempTime;
+						}
+					}
+					else {
+						tempTime = pickupTime - tempTaxi.dropTime.get(j);
+						if(time>tempTime) {
+							time = tempTime;
+						}
+					}
+				}
+				
+			}
+			
+			
+		}
+		
+		for(i=0;i<noOfFreeTaxi;i++) {
+			int tempTime;
+			Taxi tempTaxi = FreeTaxi.get(i);
+			int noOfJournies = tempTaxi.bookingId.size();
+			if(noOfJournies == 0) {
+				tempTime = Math.abs((int)('A'-pickup));
+				if(time!=tempTime) {
+					indexTobeDeleted.add(i);
+				}
+			}
+			else {
+				int flag=0;
+				for(j=0;j<noOfJournies;j++) {
+					tempTime = tempTaxi.pickupTime.get(j) - dropTime;
+					if(tempTime>=0) {
+						if(time==tempTime) {
+							flag++;
+						}
+					}
+					else {
+						tempTime = pickupTime - tempTaxi.dropTime.get(j);
+						if(time==tempTime) {
+							flag++;
+							break;
+						}
+					}
+				}
+				if(flag==0) {
+					indexTobeDeleted.add(i);
+				}
+				
+			}
+			
+			
+			
+		}
+		
+		for(i=0;i<indexTobeDeleted.size();i++) {
+			int in = indexTobeDeleted.get(i);
+			
+			FreeTaxi.remove(in-i); // (in-1)Because if we delete one element, all the other element will move back one step  
+			
+		}
+		
+		noOfFreeTaxi = FreeTaxi.size();
+		
+		indexTobeDeleted.clear();
 		
 		
+		if(FreeTaxi.size()>1) {
+			int amt = Integer.MAX_VALUE;
+			for( i=0;i<FreeTaxi.size();i++) {
+				Taxi tempTaxi = FreeTaxi.get(i);
+				int tempAmt = tempTaxi.totalEarning;
+				if(amt>tempAmt) {
+					amt = tempAmt;
+				}
+			}
+			
+			for( i=0;i<FreeTaxi.size();i++) {
+				Taxi tempTaxi = FreeTaxi.get(i);
+				int tempAmt = tempTaxi.totalEarning;
+				if(amt!=tempAmt) {
+					indexTobeDeleted.add(i);
+				}
+			}
+			
+			for(i=0;i<indexTobeDeleted.size();i++) {
+				int in = indexTobeDeleted.get(i);
+				
+				FreeTaxi.remove(in-i); // (in-1)Because if we delete one element, all the other element will move back one step  
+				
+			}
+			
+			noOfFreeTaxi = FreeTaxi.size();
+			
+			indexTobeDeleted.clear();
+		}
 		
 		if(FreeTaxi.isEmpty()) {
 			return -1;
