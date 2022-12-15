@@ -8,5 +8,6 @@ Output-1 100 11 2 21 3
 <h1>Solution</h1>
 
 <ul>
-<li>Convert Integer to String,And compare Strings</li>
+<li>Convert Integer to String.</li>
+<li>And sort the strings.</li>
 </ul>
